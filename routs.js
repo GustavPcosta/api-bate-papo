@@ -16,5 +16,5 @@ routs.post('/login', login);
 
 
 routs.post("/messages", saveMensage);
-routs.get("/messages/:room",getMessage)
-module.exports = routs
+routs.get("/messages/:room",getMessage);
+module.exports = routs;
