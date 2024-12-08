@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-
+const path = require("path")
 const { Server } = require('socket.io');
 const routes = require('./routs');
 const db = require(path.resolve(__dirname, './bd/db'));
