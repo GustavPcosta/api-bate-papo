@@ -2,8 +2,12 @@
   "name": "src",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "dev": " nodemon src/index "
+   
   },
   "keywords": [],
   "author": "",
@@ -21,6 +25,11 @@
     "pg": "^8.13.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
+    "tsup": "^8.3.5",
     "up": "^1.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
   }
 }

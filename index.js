@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const db = require('../src/bd/db'); 
+const db = require('./bd/db'); 
 const { Server } = require('socket.io');
 const routes = require('./routs');
 
