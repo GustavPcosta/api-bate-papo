@@ -1,7 +1,7 @@
 const express = require('express');
-const { createdUsers, updatedUsers, deleteUser, getOneUsers } = require('./controller/users');
-const { login } = require('./Login/login');
-const { saveMensage, getMessage } = require('./controller/chat');
+const { createdUsers, updatedUsers, deleteUser, getOneUsers } = require('../controller/users');
+const { login } = require('../Login/login');
+const { saveMensage, getMessage } = require('../controller/chat');
 
 const routs = express.Router();
 
