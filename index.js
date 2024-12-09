@@ -2,23 +2,33 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const path = require("path")
+const path = require('path');
 const { Server } = require('socket.io');
 const routes = require('./routes/routes');
-const db = require(path.resolve(__dirname, './bd/db'));
+const db = require('./bd/db');
+
 const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000', 
     methods: ['GET', 'POST'],
   },
 });
 
+
 app.use(cors());
 app.use(express.json());
-app.use(routes);
+
+
+app.use('/api', routes); 
+
+
+app.get('/', (req, res) => {
+  res.send('API funcionando!');
+});
+
 
 const verifyToken = (token) => {
   try {
@@ -29,8 +39,8 @@ const verifyToken = (token) => {
   }
 };
 
+
 io.on('connection', (socket) => {
-  
   const token = socket.handshake.query.token;
   const decoded = verifyToken(token);
 
@@ -78,6 +88,11 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(8080, () => {
-  console.log('Servidor rodando na porta 8080');
-});
+
+if (process.env.VERCEL_ENV) {
+  module.exports = app; 
+} else {
+  server.listen(8080, () => {
+    console.log('Servidor rodando na porta 8080');
+  });
+}
